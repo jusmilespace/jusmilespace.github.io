@@ -91,17 +91,16 @@
             border-color: var(--mint);
         }
 
-        /* 🆕 Logo 圖片樣式 */
+        /* Logo 圖片樣式 */
         .app-logo-img {
             width: 90px;
             height: 90px;
-            border-radius: 22px; /* App icon 圓角 */
+            border-radius: 22px;
             margin-bottom: 20px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.08); /* 讓 Logo 有點立體感 */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
             object-fit: cover;
         }
 
-        /* 舊的 icon 樣式 (給 Coffee Diary 用) */
         .app-icon-placeholder {
             font-size: 48px;
             background: var(--bg);
@@ -135,12 +134,12 @@
             align-items: center;
         }
 
-        /* 🆕 App Store 圖片按鈕 (無背景，純圖片) */
+        /* App Store 圖片按鈕 */
         .btn-store-img {
             display: inline-block;
             transition: opacity 0.2s, transform 0.2s;
             width: 100%;
-            max-width: 220px; /* 限制圖片最大寬度 */
+            max-width: 220px;
         }
         .btn-store-img:hover {
             opacity: 0.9;
@@ -167,7 +166,7 @@
             font-size: 15px;
             transition: all 0.2s;
             width: 100%;
-            max-width: 220px; /* 對齊上面的圖片寬度 */
+            max-width: 220px;
         }
         .btn-web:hover {
             background: var(--mint-dark);
@@ -238,7 +237,13 @@
     <div class="app-grid">
         
         <div class="card" style="animation-delay: 0.1s;">
-            <img src="/ju-smile-app/pwa-192x192.png" alt="Ju Smile App Logo" class="app-logo-img">
+            <img 
+                src="https://app.jusmilespace.com/ju-smile-app/icons/ju-smile-icon-192x192.png" 
+                alt="Ju Smile App Logo" 
+                class="app-logo-img"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"
+            >
+            <div class="app-icon-placeholder" style="display:none;">🥗</div>
             
             <div class="app-title">Ju Smile App</div>
             <p class="app-desc">
