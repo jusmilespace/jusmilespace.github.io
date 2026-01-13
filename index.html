@@ -91,12 +91,22 @@
             border-color: var(--mint);
         }
 
-        /* 圖示 */
-        .app-icon {
+        /* 🆕 Logo 圖片樣式 */
+        .app-logo-img {
+            width: 90px;
+            height: 90px;
+            border-radius: 22px; /* App icon 圓角 */
+            margin-bottom: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08); /* 讓 Logo 有點立體感 */
+            object-fit: cover;
+        }
+
+        /* 舊的 icon 樣式 (給 Coffee Diary 用) */
+        .app-icon-placeholder {
             font-size: 48px;
             background: var(--bg);
-            width: 80px; height: 80px;
-            border-radius: 20px;
+            width: 90px; height: 90px;
+            border-radius: 22px;
             display: flex; align-items: center; justify-content: center;
             margin-bottom: 20px;
         }
@@ -125,23 +135,24 @@
             align-items: center;
         }
 
-        /* App Store 按鈕 (黑色) */
-        .btn-store {
-            display: inline-flex;
-            background: #000;
-            color: #fff;
-            border-radius: 12px;
-            padding: 8px 24px;
-            text-decoration: none;
-            align-items: center;
-            justify-content: center;
-            transition: opacity 0.2s;
+        /* 🆕 App Store 圖片按鈕 (無背景，純圖片) */
+        .btn-store-img {
+            display: inline-block;
+            transition: opacity 0.2s, transform 0.2s;
             width: 100%;
-            max-width: 260px;
+            max-width: 220px; /* 限制圖片最大寬度 */
         }
-        .btn-store:hover { opacity: 0.8; }
+        .btn-store-img:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+        .btn-store-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
 
-        /* 網頁版按鈕 (空心) */
+        /* 網頁版按鈕 */
         .btn-web {
             display: inline-flex;
             align-items: center;
@@ -156,7 +167,7 @@
             font-size: 15px;
             transition: all 0.2s;
             width: 100%;
-            max-width: 260px;
+            max-width: 220px; /* 對齊上面的圖片寬度 */
         }
         .btn-web:hover {
             background: var(--mint-dark);
@@ -174,7 +185,6 @@
             cursor: default;
         }
         
-        /* 針對 Coffee Diary 的淡化樣式 */
         .card.coming-soon {
             opacity: 0.8;
             background: #fafafa;
@@ -228,7 +238,8 @@
     <div class="app-grid">
         
         <div class="card" style="animation-delay: 0.1s;">
-            <div class="app-icon">🥗</div>
+            <img src="/ju-smile-app/pwa-192x192.png" alt="Ju Smile App Logo" class="app-logo-img">
+            
             <div class="app-title">Ju Smile App</div>
             <p class="app-desc">
                 手掌估算熱量、AI 辨識。<br>
@@ -236,17 +247,9 @@
             </p>
             
             <div class="action-area">
-                <a href="https://apps.apple.com/app/id6757354366" target="_blank" class="btn-store" aria-label="Download on the App Store">
-    <svg viewBox="0 0 384 128" width="120" height="40" style="display:block">
-        <g fill="#FFF">
-                <path d="M78.6,89.3c-2.3,3.4-5.6,8.2-9,8.2c-3.2,0-4.6-2.1-8.3-2.1c-4,0-5.1,2.1-8.5,2.1c-3.1,0-6-4.2-9.2-9.1c-5.2-7.9-9.3-22.6-1.1-36.6c4.2-7.1,11.5-11.4,18.8-11.4c3.4,0,7.3,2.4,10,2.4c2.4,0,7.3-3,12.7-2.7c2.2,0.1,9.8,0.7,14.6,7.8c-0.4,0.2-8.7,5.1-8.6,15.7C70.1,76.5,76.4,85.6,78.6,89.3 M63.2,38.8c3.6-4.5,5.9-10.7,5.3-16.9c-5.3,0.2-11.7,3.6-15.5,8.1c-3.4,4-6.3,10.3-5.5,16.2C53.4,46.7,59.5,43.2,63.2,38.8"/>
-                <path d="M127,78.1h5.9v9.4h-5.9v23.2c0,3.3,0.1,5.6,0.6,6.7c0.7,1.6,2.3,2.4,4.9,2.4c2,0,3.6-0.3,4.9-0.7v9c-2,0.8-4.8,1.2-8.3,1.2c-5,0-8.5-1.5-10.4-4.4c-1.6-2.4-2.4-6.3-2.4-11.6V87.5h-5.4v-9.4h5.4V64.6l10.7-3.2V78.1z"/>
-                <path d="M149.3,128V46h10.3v10.9c3.2-8,8.8-11.9,16.6-11.9c1.9,0,3.7,0.2,5.2,0.7l-1.6,10.5c-1.4-0.4-2.8-0.7-4.2-0.7c-4.9,0-8.8,1.9-11.7,5.6c-2.9,3.7-4.3,8.7-4.3,15v51.9H149.3z"/>
-                <path d="M211.9,129.2c-8.9,0-15.9-2.7-21-8s-7.6-12.7-7.6-22.1c0-9.6,2.5-17.1,7.6-22.5c5.1-5.4,11.8-8.1,20.1-8.1c8.4,0,14.9,2.6,19.6,7.8s7,12.7,7,22.6v2.1h-43.4c0.3,6.3,2.4,11.2,6.3,14.7c3.9,3.5,8.8,5.2,14.6,5.2c4.4,0,8.3-0.8,11.7-2.3c3.4-1.5,5.9-3.5,7.6-6l7.8,5.9c-2.4,3.7-6.2,6.8-11.4,9.1C225.4,128.6,219.1,129.2,211.9,129.2z M211,76.9c-5,0-9,1.6-12,4.9c-3,3.3-4.6,7.7-4.9,13.2h32.7c-0.2-5.3-1.6-9.6-4.5-12.8C219.5,79,215.8,76.9,211,76.9z"/>
-                <path d="M251.7,128V46h10.2v10.3c4.2-7.8,10.7-11.8,19.6-11.8c4.5,0,8.5,1,11.9,2.9c3.4,1.9,6,4.7,7.7,8.2c2.1-3.6,5-6.4,8.7-8.2c3.7-1.9,8.1-2.9,13.3-2.9c7.6,0,13.3,2.2,17.2,6.6c3.9,4.4,5.8,11.1,5.8,20v56.8h-10.7V79.6c0-5.9-1-10.1-3.1-12.6c-2.1-2.5-5.3-3.7-9.7-3.7c-4.4,0-7.9,1.4-10.4,4.3c-2.5,2.9-3.7,7-3.7,12.5v47.9h-10.7V79.6c0-5.9-1-10.1-3.1-12.6c-2.1-2.5-5.3-3.7-9.7-3.7c-4.3,0-7.7,1.4-10.3,4.1s-3.9,6.7-3.9,11.9v48.7H251.7z"/>
-        </g>
-    </svg>
-</a>
+                <a href="https://apps.apple.com/app/id6757354366" target="_blank" class="btn-store-img" aria-label="Download on the App Store">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="Download on the App Store">
+                </a>
                 
                 <a href="/ju-smile-app/" class="btn-web">
                     開啟網頁版
@@ -255,7 +258,7 @@
         </div>
 
         <div class="card coming-soon" style="animation-delay: 0.2s;">
-            <div class="app-icon">☕</div>
+            <div class="app-icon-placeholder">☕</div>
             <div class="app-title">Coffee Diary</div>
             <p class="app-desc">
                 紀錄每一杯咖啡製作的參數與風味。<br>專屬於您的咖啡實驗室。
