@@ -109,7 +109,6 @@
             line-height: 1.5;
         }
 
-        /* QR Code 顯示區塊 */
         .qr-display {
             text-align: center;
             padding: 20px;
@@ -159,6 +158,17 @@
             box-shadow: 0 4px 12px rgba(255, 221, 0, 0.3);
         }
 
+        .btn-mint {
+            background: var(--mint-dark);
+            color: white;
+        }
+
+        .btn-mint:hover {
+            background: #4a7d6a;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(92, 156, 132, 0.3);
+        }
+
         .note {
             text-align: center;
             margin-top: 32px;
@@ -168,13 +178,6 @@
             font-size: 0.9rem;
             color: var(--text-sub);
             line-height: 1.6;
-        }
-
-        .help-text {
-            font-size: 0.85rem;
-            color: #999;
-            margin-top: 12px;
-            line-height: 1.5;
         }
 
         @keyframes fadeInUp {
@@ -208,7 +211,7 @@
         <div class="option-card">
             <div class="option-title">
                 <span>💰</span>
-                <span>街口支付</span>
+                <span>街口支付（台灣推薦）</span>
             </div>
             <p class="option-desc">
                 使用街口 App 掃描 QR Code 即可贊助
@@ -230,19 +233,33 @@
                 <span>Buy Me a Coffee</span>
             </div>
             <p class="option-desc">
-                信用卡支付
+                信用卡支付，適合國際用戶
             </p>
-            <a href="https://buymeacoffee.com/jusmilespace" target="_blank" class="btn btn-yellow">
+            <a href="https://buymeacoffee.com/你的帳號" target="_blank" class="btn btn-yellow">
                 <span>☕️</span>
                 <span>Buy Me a Coffee</span>
             </a>
         </div>
 
+        <!-- 留下好評 -->
+        <div class="option-card">
+            <div class="option-title">
+                <span>⭐</span>
+                <span>留下好評</span>
+            </div>
+            <p class="option-desc">
+                如果暫時無法贊助，留下五星好評也是最大的支持
+            </p>
+            <a href="https://apps.apple.com/app/id6757354366?action=write-review" target="_blank" class="btn btn-mint">
+                <span>⭐</span>
+                <span>前往 App Store 評價</span>
+            </a>
+        </div>
+
         <!-- 簡單說明 -->
         <div class="note">
-            沒錢也沒關係！<br>
-            留下五星好評或分享給朋友，<br>
-            都是對我們最大的鼓勵 ❤️
+            分享給朋友或提供建議，<br>
+            也是對我們最大的鼓勵 ❤️
         </div>
 
     </div>
