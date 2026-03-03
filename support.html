@@ -51,16 +51,17 @@
 
         /* --- 2. 精確同步 Logo 數值 --- */
         .logo {
-            font-size: 24px;
-            font-weight: 800;
-            /* 與官網同步 800 */
-            color: var(--mint-dark);
+            font-family: var(--font) !important;
+            font-size: 24px !important;
+            font-weight: 800 !important;
+            color: var(--mint-dark) !important;
             text-decoration: none;
-            letter-spacing: -0.8px;
-            /* 關鍵：縮小字距 */
+            letter-spacing: -0.5px;
+            /* 精確對齊首頁數值 */
             display: flex;
             align-items: center;
             line-height: 1;
+            -webkit-font-smoothing: antialiased;
         }
 
         /* --- 2. 插入同步導航列樣式 (直接複製產品介紹頁的 CSS) --- */
