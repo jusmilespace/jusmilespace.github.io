@@ -110,10 +110,11 @@
         /* --- 3. 手機版選單 --- */
         @media (max-width: 768px) {
             .menu-toggle {
-                display: flex;
-                flex-direction: column;
-                gap: 5px;
-                cursor: pointer;
+                display: flex !important;
+                position: relative;
+                z-index: 2001;
+                /* 關鍵：確保 X 的層級高於滑出的選單 */
+                transition: all 0.3s ease;
             }
 
             .menu-toggle .bar {
@@ -129,14 +130,17 @@
                 right: -100%;
                 top: 0;
                 width: 200px;
+                /* 恢復原本的 200px 寬度 */
                 height: 100vh;
                 background: rgba(255, 255, 255, 0.98);
                 backdrop-filter: blur(15px);
                 -webkit-backdrop-filter: blur(15px);
                 flex-direction: column;
                 padding-top: 80px;
+                /* 恢復原本的 80px 頂部間距 */
                 transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
                 box-shadow: -10px 0 30px rgba(0, 0, 0, 0.05);
+                z-index: 1000;
             }
 
             .nav-links.active {
@@ -451,14 +455,37 @@
     </div>
 
     <script>
+        // 取得導航列元件
         const menuBtn = document.getElementById('mobile-menu');
         const navLinks = document.getElementById('nav-links');
+
         if (menuBtn && navLinks) {
-            menuBtn.addEventListener('click', () => {
+            // 1. 點擊漢堡選單：切換 active 狀態（即產生 X 效果與滑入選單）
+            menuBtn.addEventListener('click', (e) => {
+                e.stopPropagation(); // 防止事件冒泡
                 menuBtn.classList.toggle('active');
                 navLinks.classList.toggle('active');
             });
+
+            // 2. 點擊選單內的任何連結：自動關閉選單 (User Experience 優化)
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    menuBtn.classList.remove('active');
+                    navLinks.classList.remove('active');
+                });
+            });
+
+            // 3. 點擊選單以外的區域：自動關閉（2026 年標準的直覺設計）
+            document.addEventListener('click', (e) => {
+                if (navLinks.classList.contains('active') &&
+                    !navLinks.contains(e.target) &&
+                    !menuBtn.contains(e.target)) {
+                    menuBtn.classList.remove('active');
+                    navLinks.classList.remove('active');
+                }
+            });
         }
+
         function shareApp() {
             // 如果瀏覽器支援 Web Share API（大部分手機都支援）
             if (navigator.share) {
